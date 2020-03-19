@@ -205,6 +205,7 @@ void SceneBuilder::Initialize()
 		Transform& t = scene->Registry().get<Transform>(test);
 		t.SetPosition(glm::vec3(glm::cos(step * ix) * 5.0f, 0.0f, glm::sin(step * ix) * 5.0f));
 		t.SetEulerAngles(glm::vec3(-90.0f, glm::degrees(-step * ix), 0.0f));
+		scene->AddBehaviour<RotateBehaviour>(test, glm::vec3(45.0f, 45.0f, 45.0f));
 	}
 	
 	// We'll create a ring of point lights behind each monkey
@@ -227,10 +228,12 @@ void SceneBuilder::Initialize()
 		entt::entity test = scene->CreateEntity();
 		RenderableComponent& renderable = scene->Registry().assign<RenderableComponent>(test);
 		renderable.Mesh = MeshBuilder::Bake(data);
-		//renderable.Material = monkeyMat;
+		renderable.Material = monkeyMat;
 		Transform& t = scene->Registry().get<Transform>(test);
+		t.LookAt(glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 		// Make our monkeys spin around the center
-		scene->AddBehaviour<RotateBehaviour>(test, glm::vec3(45.0f, 45.0f, 45.0f));
+		scene->AddBehaviour<ControlBehaviour>(test, glm::vec3(1.0f));
+
 	}
 	
 	// The box with the polka pattern
@@ -296,11 +299,11 @@ void SceneBuilder::Initialize()
 		cam.Projection = glm::perspective(glm::radians(60.0f), 1.0f, 0.1f, 1000.0f);
 
 		// We'll add our control behaviour so that we can fly the camera around
-		scene->AddBehaviour<ControlBehaviour>(camera, glm::vec3(1.0f));
+		//scene->AddBehaviour<ControlBehaviour>(camera, glm::vec3(1.0f));
 
 		auto& camTransform = scene->Registry().get<Transform>(camera);
-		camTransform.SetPosition(glm::vec3(5.0f, 5.0f, 5.0f));
-		camTransform.LookAt(glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+		camTransform.SetPosition(glm::vec3(0.0f, 10.0f, 0.0f));
+		camTransform.LookAt(glm::vec3(0, 0, 0), glm::vec3(0, 0, 1));
 
 		// We'll attach a cube to the camera so that it casts shadows
 		RenderableComponent& renderable = scene->Registry().assign<RenderableComponent>(camera);
