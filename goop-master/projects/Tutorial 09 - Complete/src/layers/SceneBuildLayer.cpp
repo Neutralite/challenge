@@ -126,7 +126,7 @@ void SceneBuilder::Initialize()
 	emissiveShader->LoadPart(ShaderStageType::VertexShader, "shaders/lighting.vs.glsl");
 	emissiveShader->LoadPart(ShaderStageType::FragmentShader, "shaders/forward-emissive.fs.glsl");
 	emissiveShader->Link();
-
+	/*
 	// Creating our 'console'
 	{
 		// Material for the frame
@@ -174,7 +174,7 @@ void SceneBuilder::Initialize()
 		t2.SetPosition(glm::vec3(0.0f, 1.45f, -0.14f));
 		t2.SetEulerAngles(glm::vec3(-45.0f, 0.0f, 0.0f));
 	}
-		   	
+	*/   	
 	// Load and set up our simple test material
 	Material::Sptr monkeyMat = std::make_shared<Material>(emissiveShader);
 	monkeyMat->Set("s_Albedo", Texture2D::LoadFromFile("marble.png", false, true, true));
@@ -235,6 +235,7 @@ void SceneBuilder::Initialize()
 
 	}
 	
+	/*
 	// The box with the polka pattern
 	{
 		MeshData indicatorCube = MeshBuilder::Begin();
@@ -248,6 +249,7 @@ void SceneBuilder::Initialize()
 		Transform& t = scene->Registry().get<Transform>(test);
 		t.SetPosition({ 20.0f, 0.0f, 0.0f });
 	}
+	*/
 
 	// We'll use a tiny cube to cast a shadow from our camera, and to indicate where the light sources are
 	MeshData indicatorCube = MeshBuilder::Begin();
@@ -311,6 +313,7 @@ void SceneBuilder::Initialize()
 
 	}
 
+	/*
 	// We'll create a projector to cast our smile on the floor
 	entt::entity lightEnt = entt::null;
 	auto& light = CreateShadowCaster(scene, &lightEnt, glm::vec3(0.0f, 5.0f, 0.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f), 25.0f);
@@ -318,7 +321,8 @@ void SceneBuilder::Initialize()
 	light.Attenuation = 1.0f / 15.0f; 
 	light.ProjectorImage = Texture2D::LoadFromFile("light_projection.png", false, false, true);
 	scene->AddBehaviour<LightFlickerBehaviour>(lightEnt, 10.0f);
-		
+	*/
+
 	// We'll create a ring of shadow casting lights, one for each monkey
 	for (int ix = 0; ix < numMonkeys; ix++) {
 		entt::entity lightEnt = entt::null;

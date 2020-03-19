@@ -208,21 +208,21 @@ void LightingLayer::PostRender() {
 
 void LightingLayer::RenderGUI()
 {
-	// We'll put all the lighting stuff into it's own ImGUI window
-	ImGui::Begin("Lighting Settings");
+	//// We'll put all the lighting stuff into it's own ImGUI window
+	//ImGui::Begin("Lighting Settings");
 
-	// For now, we'll just have a slider to adjust our exposure
-	static float exposure = 1.0f;
-	if (ImGui::DragFloat("Exposure", &exposure, 0.1f, 0.1f, 10.0f)) {
-		myFinalComposite->SetUniform("a_Exposure", exposure);
-	}
-	// We'll have a color picker for the ambient light color
-	ImGui::ColorEdit3("Ambient", &myAmbientLight.x);
+	//// For now, we'll just have a slider to adjust our exposure
+	//static float exposure = 1.0f;
+	//if (ImGui::DragFloat("Exposure", &exposure, 0.1f, 0.1f, 10.0f)) {
+	//	myFinalComposite->SetUniform("a_Exposure", exposure);
+	//}
+	//// We'll have a color picker for the ambient light color
+	//ImGui::ColorEdit3("Ambient", &myAmbientLight.x);
 
-	ImGui::Checkbox("Process Shadows", &isProcessingShadows);
-	ImGui::Checkbox("Process Point Lights", &isProcessingPointLights);
-	
-	ImGui::End();
+	//ImGui::Checkbox("Process Shadows", &isProcessingShadows);
+	//ImGui::Checkbox("Process Point Lights", &isProcessingPointLights);
+	//
+	//ImGui::End();
 }
 
 void LightingLayer::PostProcessShadows() {
