@@ -129,6 +129,7 @@ void PostLayer::OnWindowResize(uint32_t width, uint32_t height) {
 
 void PostLayer::RenderGUI()
 {
+	/*
 	ImGui::Begin("Post Processing");
 
 	// Iterate over all passes
@@ -156,6 +157,17 @@ void PostLayer::RenderGUI()
 	}
 
 	ImGui::End();
+	*/
+	ImGui::Begin("Controls");
+	ImGui::Text("W - Move Forward");
+	ImGui::Text("S - Move Backwards");
+	ImGui::Text("A - Move Left");
+	ImGui::Text("D - Move Right");
+	ImGui::Text("Left Arrow - Turn Left");
+	ImGui::Text("Right Arrow - Turn Right");
+
+	ImGui::End();
+
 }
 
 void PostLayer::PostRender() {

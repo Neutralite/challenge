@@ -230,7 +230,6 @@ void SceneBuilder::Initialize()
 		renderable.Mesh = MeshBuilder::Bake(data);
 		renderable.Material = monkeyMat;
 		Transform& t = scene->Registry().get<Transform>(test);
-		t.LookAt(glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 		// Make our monkeys spin around the center
 		scene->AddBehaviour<ControlBehaviour>(test, glm::vec3(1.0f));
 
@@ -358,3 +357,4 @@ void SceneBuilder::Initialize()
 		renderable.Material = marbleMat;
 	}
 }
+

@@ -23,26 +23,26 @@ void ControlBehaviour::Update(entt::entity entity) {
 	glm::vec3 translate = glm::vec3(0.0f);
 	glm::vec2 rotation = glm::vec2(0.0f);
 	if (window->IsKeyDown(Key::W))
-		translate.z -= 1.0f;
-	if (window->IsKeyDown(Key::S))
-		translate.z += 1.0f;
-	if (window->IsKeyDown(Key::A))
 		translate.x -= 1.0f;
-	if (window->IsKeyDown(Key::D))
+	if (window->IsKeyDown(Key::S))
 		translate.x += 1.0f;
-	if (window->IsKeyDown(Key::LeftControl))
-		translate.y -= 1.0f;
-	if (window->IsKeyDown(Key::Space))
-		translate.y += 1.0f;
+	if (window->IsKeyDown(Key::A))
+		translate.z += 1.0f;
+	if (window->IsKeyDown(Key::D))
+		translate.z -= 1.0f;
+	//if (window->IsKeyDown(Key::LeftControl))
+	//	translate.y -= 1.0f;
+	//if (window->IsKeyDown(Key::Space))
+	//	translate.y += 1.0f;
 
 	if (window->IsKeyDown(Key::Left))
 		rotation.x += 1.0f;
 	if (window->IsKeyDown(Key::Right))
 		rotation.x -= 1.0f;
-	if (window->IsKeyDown(Key::Up))
-		rotation.y += 1.0f;
-	if (window->IsKeyDown(Key::Down))
-		rotation.y -= 1.0f;
+	//if (window->IsKeyDown(Key::Up))
+	//	rotation.y += 1.0f;
+	//if (window->IsKeyDown(Key::Down))
+	//	rotation.y -= 1.0f;
 
 	translate *= Timing::DeltaTime * mySpeed;
 	rotation *= Timing::DeltaTime * 90.0f;
